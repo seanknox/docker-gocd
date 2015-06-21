@@ -1,7 +1,12 @@
-FROM java:openjdk-7-jdk
+FROM ubuntu:14.04
 
 ENV GOCD_VERSION 15.1.0-1863
 ENV GOCD_DISTR go-agent.deb
+
+RUN apt-get update \
+    && apt-get -y install -y openjdk-7-jdk curl unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install go.cd agent
 RUN gpg --keyserver pgp.mit.edu --recv-keys 9149B0A6173454C7 \
@@ -20,5 +25,4 @@ VOLUME /var/lib/go-agent
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-EXPOSE 8153 8154
 CMD ["go-agent"]

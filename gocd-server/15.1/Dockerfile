@@ -1,7 +1,12 @@
-FROM java:openjdk-7-jdk
+FROM ubuntu:14.04
 
 ENV GOCD_VERSION 15.1.0-1863
 ENV GOCD_DISTR go-server.deb
+
+RUN apt-get update \
+    && apt-get -y install -y openjdk-7-jdk curl unzip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install go.cd server
 RUN gpg --keyserver pgp.mit.edu --recv-keys 9149B0A6173454C7 \
