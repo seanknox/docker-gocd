@@ -9,13 +9,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install go.cd agent
-RUN gpg --keyserver pgp.mit.edu --recv-keys 9149B0A6173454C7 \
-    && curl -fSL "http://dl.bintray.com/gocd/gocd-deb/go-agent-$GOCD_VERSION.deb" -o $GOCD_DISTR \
-    && curl -fSL "http://dl.bintray.com/gocd/gocd-deb/go-agent-$GOCD_VERSION.deb.asc" -o $GOCD_DISTR.asc \
-    && gpg --verify $GOCD_DISTR.asc \
+RUN curl -fSL "https://download.go.cd/binaries/$GOCD_VERSION/deb/go-agent-$GOCD_VERSION.deb" -o $GOCD_DISTR \
     && dpkg -i $GOCD_DISTR \
-    && rm $GOCD_DISTR \
-    && rm $GOCD_DISTR.asc
+    && rm $GOCD_DISTR
 
 RUN mkdir /home/go \
     && usermod -d /home/go go
