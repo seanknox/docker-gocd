@@ -4,7 +4,7 @@ ENV GOCD_VERSION 16.2.1-3027
 ENV GOCD_DISTR go-agent.deb
 
 RUN apt-get update \
-    && apt-get -y install -y openjdk-7-jdk unzip supervisor \
+    && apt-get -y install -y openjdk-7-jdk unzip supervisor jq\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
