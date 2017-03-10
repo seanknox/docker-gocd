@@ -1,6 +1,6 @@
-FROM openjdk:9
+FROM openjdk:8
 
-ENV GOCD_VERSION 17.2.0-4587
+ENV GOCD_VERSION 16.12.0-4352
 ENV GOCD_DISTR go-agent.deb
 
 # Install go.cd agent
