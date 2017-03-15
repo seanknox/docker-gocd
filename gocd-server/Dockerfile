@@ -1,4 +1,4 @@
-FROM openjdk:9
+FROM openjdk:8
 
 ENV GOCD_VERSION 17.2.0-4587
 ENV GOCD_DISTR go-server.deb
